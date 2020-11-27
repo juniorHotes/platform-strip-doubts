@@ -21,8 +21,6 @@ const index = async (req, res) => {
                         questions,
                         response
                     })
-
-                    console.log({ questions, response })
                 })
             } else {
                 res.sendStatus(404)
