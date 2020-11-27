@@ -24,7 +24,6 @@ const saveQuestion = async (req, res) => {
         }).then(() => {
             res.statusCode = 200
             console.log('Created question success!')
-            res.redirect('/')
         })
     } catch (err) {
         console.log('Error creating question: ' + err)
@@ -32,7 +31,33 @@ const saveQuestion = async (req, res) => {
     }
 }
 
+const search = async (req, res) => {
+    const result = req.params.query
+
+    console.log(result)
+
+    // await Question.findAndCountAll({
+    //     raw: true, order: [['id', 'DESC']],
+    //     where: {
+    //         title: {
+    //             [Op.like]: '%%'
+    //         }
+    //     },
+    //     offset: 10,
+    //     limit: 2
+    // }).then(questions => {
+    //     res.send({
+    //         questions
+    //     })
+    //     res.statusCode = 200
+    // }).catch((err) => {
+    //     res.sendStatus(400)
+    //     console.log('Error creating question: ' + err)
+    // })
+}
+
 module.exports = {
     index,
+    search,
     saveQuestion
 }
