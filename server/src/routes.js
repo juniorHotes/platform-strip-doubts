@@ -10,7 +10,8 @@ connection.authenticate()
     .catch((err) => console.log('Authenticate error: ' + err))
 
 routes.get('/', QuestionController.index)
-routes.post('/savequestion', QuestionController.saveQuestion)
+routes.get('/search', QuestionController.search)
+routes.post('/newquestion', QuestionController.saveQuestion)
 
 routes.get('/question/:id', ResponseController.index)
 routes.post('/question/response', ResponseController.saveResponse)
