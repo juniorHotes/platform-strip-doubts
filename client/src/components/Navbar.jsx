@@ -7,15 +7,15 @@ export default function Navbar() {
     return (
         <div className="navbar navbar-light bg-primary">
             <Link className="navbar-brand" to="/">
-                <h3>Myblog</h3>
+                <h3 className="text-light">Platform Strip Soubts</h3>
             </Link>
             <form>
                 <input type="search"
                     name="search"
                     value={getQuery}
                     onChange={(e) => setQuery(e.target.value)}
+                    placeholder="Search"
                 />
-                <button type="submit">Search</button>
             </form>
         </div>
     )
