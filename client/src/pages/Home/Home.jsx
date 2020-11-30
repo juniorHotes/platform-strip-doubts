@@ -4,12 +4,14 @@ import Navbar from '../../components/Navbar'
 
 import api from '../../services/api'
 
-export default function Home() {
+export default function Home(props) {
     const [getQuestions, setGetQuestions] = useState([])
 
+    const url = props.location.search === "" ? "/" : props.location.search
+
     useEffect(async () => {
-        await api.get('/').then(response => {
-            const data = response.data.questions
+        await api.get(url).then(response => {
+            const data = props.location.search === "" ? response.data.questions : response.data.questions.rows
             setGetQuestions(data)
         })
 
@@ -18,7 +20,7 @@ export default function Home() {
     function showAllQuestions() {
         if (getQuestions.length == 0)
             return <h2 style={{ textAlign: 'center' }}>Não encontramos nem uma pergunta!</h2>
-
+        
         return getQuestions.map(item => {
             return (
                 <div className="card" key={item.id}>
