@@ -13,22 +13,22 @@ Small platform to ask questions and answer questions.
 
 ### Installation
 * Front End
-- Open the client folder and use the following commands
+Open the client folder and use the following commands
 ```bash
 yarn install
 ```
-- After
+After
 ```bash
 yarn start
 ```
 The project will run on localhost: 3000
 
 * Back-End
-- Open the server folder and use the following commands
+Open the server folder and use the following commands
 ```bash
 yarn install
 ```
-- After
+After
 ```bash
 yarn start
 ```
