@@ -62,3 +62,18 @@ span {
 .card-body {
   padding: 1rem;
 }
+.navbar form {
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbar form input {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  outline-style: none;
+  background: white url('../img/lupa.jpg') no-repeat right;
+  background-size: contain;
+}
