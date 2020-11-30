@@ -1,8 +1,31 @@
+const Sequelize = require('sequelize')
 const Question = require('../migrations/question')
 
+const Op = Sequelize.Op
 const index = async (req, res) => {
-    await Question.findAll({ raw: true, order: [['id', 'DESC']] })
-        .then(questions => {
+    const result = req.query["search"]
+
+    if (result === undefined) {
+        await Question.findAll({ raw: true, order: [['id', 'DESC']], limit: 20 })
+            .then(questions => {
+                res.send({
+                    questions
+                })
+                res.statusCode = 200
+            }).catch((err) => {
+                res.sendStatus(400)
+                console.log('Error creating question: ' + err)
+            })
+    } else {
+        await Question.findAndCountAll({
+            raw: true, order: [['id', 'DESC']],
+            where: {
+                title: {
+                    [Op.like]: `%${result}%`
+                }
+            },
+            limit: 20
+        }).then(questions => {
             res.send({
                 questions
             })
@@ -11,6 +34,7 @@ const index = async (req, res) => {
             res.sendStatus(400)
             console.log('Error creating question: ' + err)
         })
+    }
 }
 
 const saveQuestion = async (req, res) => {
@@ -31,33 +55,7 @@ const saveQuestion = async (req, res) => {
     }
 }
 
-const search = async (req, res) => {
-    const result = req.params.query
-
-    console.log(result)
-
-    // await Question.findAndCountAll({
-    //     raw: true, order: [['id', 'DESC']],
-    //     where: {
-    //         title: {
-    //             [Op.like]: '%%'
-    //         }
-    //     },
-    //     offset: 10,
-    //     limit: 2
-    // }).then(questions => {
-    //     res.send({
-    //         questions
-    //     })
-    //     res.statusCode = 200
-    // }).catch((err) => {
-    //     res.sendStatus(400)
-    //     console.log('Error creating question: ' + err)
-    // })
-}
-
 module.exports = {
     index,
-    search,
     saveQuestion
 }
