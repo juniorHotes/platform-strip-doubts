@@ -9,7 +9,6 @@ function Routes() {
   return (
     <BrowserRouter>
       <Route path="/" exact component={Home} />
-      <Route path="/search" component={Home} />
       <Route path="/newquestion" component={NewQuestion} />
       <Route path="/question" component={Respond} />
     </BrowserRouter>
