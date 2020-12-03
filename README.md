@@ -2,6 +2,9 @@
 Question and answer platform
 Small platform to ask questions and answer questions.
 
+# :rocket: Funcionalidades
+A platform to answer and answer questions, ask questions to other users or answer questions from others, simple to the point.
+
 ## :computer: Technologies
 * [Reacjs](https://pt-br.reactjs.org/)
 * [Node.js](https://nodejs.org/en/)
@@ -26,12 +29,12 @@ yarn start
 
 ## :tada: Contributing
 
-Read the [contribution] page(./ CONTRIBUTING.md) to learn how to start a discussion and start contributing.
+Read the [contribution](./CONTRIBUTING.md) to learn how to start a discussion and start contributing.
 
 ## :closed_book: Licencia
 
-Released in 2020: closed_book: Licencia
+Released in 2020 :closed_book: Licencia
 
-This project is under [MIT license](./ LICENSE).
+This project is under [MIT license](./LICENSE).
 
 Give ⭐️ if this project helped you!
