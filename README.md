@@ -24,14 +24,14 @@ yarn start
 - Front-End run on localhost:3000
 - Back-End run on localhost:3333
 
-##: tada: Contributing
+## :tada: Contributing
 
-Read the [contribution] page (./ CONTRIBUTING.md) to learn how to start a discussion and start contributing.
+Read the [contribution] page(./ CONTRIBUTING.md) to learn how to start a discussion and start contributing.
 
-##: closed_book: Licencia
+## :closed_book: Licencia
 
 Released in 2020: closed_book: Licencia
 
-This project is under [MIT license] (./ LICENSE).
+This project is under [MIT license](./ LICENSE).
 
 Give ⭐️ if this project helped you!
