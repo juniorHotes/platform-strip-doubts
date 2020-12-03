@@ -2,7 +2,7 @@
 Question and answer platform
 Small platform to ask questions and answer questions.
 
-# :rocket: Funcionalidades
+# :rocket: Functionalities
 A platform to answer and answer questions, ask questions to other users or answer questions from others, simple to the point.
 
 ## :computer: Technologies
