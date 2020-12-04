@@ -24,7 +24,6 @@ const index = async (req, res) => {
                 })
             } else {
                 res.sendStatus(404)
-                res.redirect('/')
             }
         })
     } catch (err) {
@@ -41,7 +40,6 @@ const saveResponse = async (req, res) => {
         body,
         questionID
     }).then(() => {
-        res.redirect('/question/' + questionID)
         res.sendStatus(200)
     }).catch((err) => {
         console.log("Error saving response: " + err)
