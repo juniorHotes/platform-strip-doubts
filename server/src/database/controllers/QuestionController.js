@@ -46,7 +46,7 @@ const saveQuestion = async (req, res) => {
             title,
             description
         }).then(() => {
-            res.statusCode = 200
+            res.sendStatus(200)
             console.log('Created question success!')
         })
     } catch (err) {
