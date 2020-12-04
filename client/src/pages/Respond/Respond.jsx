@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
 import Navbar from '../../components/Navbar'
 
 import api from '../../services/api'
 
 export default function Respond(props) {
-    const history = useHistory();
 
-    const [getQuestion, setQuestion] = useState([])
+    const [getQuestion, setQuestion] = useState('')
     const [getResposes, setResposes] = useState([])
 
     const [getResponse, setResponse] = useState('')
@@ -25,28 +23,27 @@ export default function Respond(props) {
 
     }, [])
 
-    function newResponse() {
-        api.post('question/response', {
-            body: getResponse,
+    async function newResponse(e) {
+        e.preventDefault()
+
+        await api.post('question/response', {
+            body: getResponse.trim(),
             questionID: getQuestionID
         }).then(() => {
             alert('Sua resposta foi salva!')
-            history.push(history.location.pathname);
+
+            setResponse('')
+
+            api.get(props.location.pathname).then(res => {
+                const { questions, response } = res.data
+
+                setQuestion(questions)
+                setResposes(response)
+
+                setQuestionID(questions.id)
+            })
         }).catch((err) => {
             alert('Erro ao responder esta pergunta: ' + err)
-        })
-    }
-    function renderResponses() {
-        return getResposes.map(item => {
-            return (
-                <div className="card-body card-response" key={item.id}>
-                    <h4>Um usuário respondeu</h4>
-                    <p>{item.body}</p>
-                    <span>
-                        Postado em: {item.createdAt}
-                    </span>
-                </div>
-            )
         })
     }
 
@@ -79,7 +76,19 @@ export default function Respond(props) {
                             </form>
                         </div>
                     </div>
-                    {renderResponses()}
+                    {getResposes.map(item => {
+                        return (
+                            <div className="card-body card-response" key={item.id}>
+                                <h4>Um usuário respondeu</h4>
+                                <p>{item.body}</p>
+                                <span>
+
+                                    Postado em: {item.createdAt.split('T')[0]}
+                                </span>
+                            </div>
+                        )
+                    })
+                    }
                 </div>
             </div>
         </>
