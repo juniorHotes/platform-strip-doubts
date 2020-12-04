@@ -7,12 +7,20 @@ export default function AskQuestion() {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
 
-    async function newQuestion() {
+    async function newQuestion(e) {
+        e.preventDefault()
+        
         await api.post('newquestion', {
-            title,
-            description
+            title: title.trim(),
+            description: description.trim()
         }).then(() => {
-            alert('Sua pergunta foi salva!');
+            alert('Sua pergunta foi salva!')
+
+            setTitle('')
+            setDescription('')
+
+        }).catch((err) => {
+            alert('Erro ao salvar pergunta: ' + err)
         })
     }
 
@@ -34,11 +42,13 @@ export default function AskQuestion() {
                                 name="title"
                                 placeholder="Título" required
                             />
+                            <br></br>
 
-                            <label htmlFor="">Descrição</label>
+                            <label htmlFor="description">Descrição</label>
                             <textarea className="form-control"
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
+                                id="description"
                                 name="description"
                                 placeholder="Descreva sua pergunta" required
                             >
