@@ -27,7 +27,7 @@ export default function AskQuestion() {
     return (
         <>
             <Navbar />
-            <div className="container">
+            <div className="container col-8">
                 <div className="card">
                     <div className="card-header">
                         <h3>Faça uma pergunta</h3>

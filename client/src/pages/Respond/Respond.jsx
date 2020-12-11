@@ -10,7 +10,7 @@ export default function Respond(props) {
 
     const [getResponse, setResponse] = useState('')
     const [getQuestionID, setQuestionID] = useState(0)
-
+    
     useEffect(async () => {
         await api.get(props.location.pathname).then(res => {
             const { questions, response } = res.data
@@ -50,7 +50,7 @@ export default function Respond(props) {
     return (
         <>
             <Navbar />
-            <div className="container">
+            <div className="container col-8">
                 <div className="card">
                     <div className="card-header">
                         <h2>{getQuestion.title}</h2>
