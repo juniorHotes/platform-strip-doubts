@@ -21,6 +21,7 @@ const index = async (req, res) => {
                         questions,
                         response
                     })
+                    res.sendStatus(200)
                 })
             } else {
                 res.sendStatus(404)
