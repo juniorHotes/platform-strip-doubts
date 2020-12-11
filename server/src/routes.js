@@ -9,7 +9,7 @@ connection.authenticate()
     .then(() => console.log('Authenticate: OK!'))
     .catch((err) => console.log('Authenticate error: ' + err))
 
-routes.get('/', QuestionController.index)
+routes.get('/:search?', QuestionController.index)
 routes.post('/newquestion', QuestionController.saveQuestion)
 
 routes.get('/question/:id', ResponseController.index)
