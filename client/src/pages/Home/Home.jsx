@@ -4,23 +4,20 @@ import Navbar from '../../components/Navbar'
 
 import api from '../../services/api'
 
-export default function Home(props) {
+export default function Home() {
     const [getQuestions, setGetQuestions] = useState([])
 
-    const url = props.location.search === "" ? "/" : props.location.search
-
     useEffect(async () => {
-        await api.get(url).then(response => {
-            const data = props.location.search === "" ? response.data.questions : response.data.questions.rows
+        await api.get('/').then(response => {
+            const data = response.data.questions
             setGetQuestions(data)
         })
-
     }, [])
-
+   
     function showAllQuestions() {
         if (getQuestions.length == 0)
             return <h2 style={{ textAlign: 'center' }}>Não encontramos nem uma pergunta!</h2>
-        
+
         return getQuestions.map(item => {
             return (
                 <div className="card" key={item.id}>
@@ -42,10 +39,14 @@ export default function Home(props) {
         })
     }
 
+    function getDataSearch(data) {
+        setGetQuestions(data)
+    }
+    
     return (
         <div>
-            <Navbar />
-            <div className="container">
+            <Navbar search={true} navSearch={getDataSearch} />
+            <div className="container col-8">
                 <div className="header-question">
                     <h2>Perguntas</h2>
                     <Link to={`/newquestion`} className="btn btn-success">Fazer uma pergunta</Link>
