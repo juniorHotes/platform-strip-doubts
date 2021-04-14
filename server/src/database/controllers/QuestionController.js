@@ -6,7 +6,11 @@ const index = async (req, res) => {
     const result = req.params.search
 
     if(result === undefined) {
-        await Question.findAll({ raw: true, order: [['id', 'DESC']], limit: 20 })
+        await Question.findAll({ 
+            raw: true, 
+            order: [['id', 'DESC']], 
+            limit: 8 
+        })
         .then(questions => {
             res.send({
                 questions
@@ -19,13 +23,15 @@ const index = async (req, res) => {
 
     } else {
         await Question.findAndCountAll({
-            raw: true, order: [['id', 'DESC']],
+            raw: true, 
+            order: [['id', 'DESC']],
+            
             where: {
                 title: {
                     [Op.like]: `%${result}%`
                 }
             },
-            limit: 20
+            limit: 8
         }).then(questions => {
             res.send({
                 questions
